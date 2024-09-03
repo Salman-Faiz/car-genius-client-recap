@@ -1,28 +1,29 @@
 import { Link } from "react-router-dom";
 import loginImg from "../../../public/assets/images/login/login.svg";
-// import { useContext } from "react";
-// import { AuthContext } from "../../Providers/AuthProvider";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+
 const SignUp = () => {
-  //   const { createUser } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
 
-  //   const handleSignUp = (event) => {
-  //     event.preventDefault();
-  //     const form = event.target;
-  //     const name = form.name.value;
-  //     const email = form.email.value;
-  //     const password = form.password.value;
-  //     console.log(name, email, password);
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, email, password);
 
-  //     createUser(email, password)
-  //       .then((result) => {
-  //         const user = result.user;
-  //         console.log(user);
-  //       })
-  //       .catch((error) => {
-  //         const errorCode = error.code;
-  //         const errorMessage = error.message;
-  //       });
-  //   };
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  };
 
   return (
     <div className="hero bg-base-200 min-h-screen">
@@ -33,7 +34,7 @@ const SignUp = () => {
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl ">
           <h1 className="text-5xl font-bold mx-auto pt-8">Sign Up</h1>
 
-          <form className="card-body">
+          <form onSubmit={handleSignUp} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>
