@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const BookService = () => {
   const services = useLoaderData();
@@ -24,6 +25,24 @@ const BookService = () => {
       Image: img,
     };
     console.log(bookingOrder);
+    fetch("http://localhost:5000/bookings", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookingOrder),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Congratulation",
+            text: "Your Booking is being Confirmed",
+            icon: "question",
+          });
+        }
+      });
   };
   return (
     <div>
