@@ -16,13 +16,13 @@ const BookService = () => {
     const price = form.price.value;
 
     const bookingOrder = {
-      CustomerName: name,
-      Email: email,
-      PurchaseDate: date,
+      customerName: name,
+      email: email,
+      purchaseDate: date,
       price: price,
       id: _id,
       service: title,
-      Image: img,
+      image: img,
     };
     console.log(bookingOrder);
     fetch("http://localhost:5000/bookings", {
