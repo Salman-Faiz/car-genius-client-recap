@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import logo from "../../../../public/assets/logo.svg";
-// import { useContext } from "react";
-// import { AuthContext } from "../../../Providers/AuthProvider";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const Navbar = () => {
-  //   const { user, logOut } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
 
   const handleLogOut = () => {
     logOut()
@@ -70,7 +70,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <button className="btn btn-outline btn-warning">Appointment</button>
-        {/* <div>
+        <div>
           {user?.email ? (
             <button onClick={handleLogOut} className="btn btn-error ms-5">
               Logout
@@ -80,7 +80,7 @@ const Navbar = () => {
               <Link to="/login">Log In</Link>
             </button>
           )}
-        </div> */}
+        </div>
       </div>
     </div>
   );
