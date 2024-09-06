@@ -13,7 +13,28 @@ const Bookings = () => {
       .then((data) => {
         setBookings(data);
       });
-  }, []);
+  }, [url]);
+
+  // STATE AND EVENT HANDLER SHOULD BE IN SAME COMPONENT
+  const handleDeleteBooking = (id) => {
+    const proceed = confirm("Are You Sure You Want to Delete this Booking?");
+    if (proceed) {
+      fetch(`http://localhost:5000/bookings/${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.deletedCount > 0) {
+            const remainingBookings = bookings.filter(
+              (booking) => booking._id !== id
+            );
+            setBookings(remainingBookings);
+          }
+        })
+        .catch((error) => console.error("Error:", error));
+    }
+  };
+
   return (
     <div className="overflow-x-auto">
       <h1 className="text-center text-3xl text-orange-500">
@@ -34,7 +55,11 @@ const Bookings = () => {
         <tbody>
           {/* row 1 */}
           {bookings.map((booking) => (
-            <BookingsRow key={booking._id} booking={booking}></BookingsRow>
+            <BookingsRow
+              key={booking._id}
+              booking={booking}
+              handleDeleteBooking={handleDeleteBooking}
+            ></BookingsRow>
           ))}
         </tbody>
       </table>

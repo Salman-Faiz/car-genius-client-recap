@@ -39,7 +39,7 @@ const BookService = () => {
           Swal.fire({
             title: "Congratulation",
             text: "Your Booking is being Confirmed",
-            icon: "question",
+            icon: "success",
           });
         }
       });
