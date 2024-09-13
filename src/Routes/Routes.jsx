@@ -26,7 +26,11 @@ const router = createBrowserRouter([
       },
       {
         path: "bookservice/:id",
-        element: <BookService />,
+        element: (
+          <PrivateRoutes>
+            <BookService />
+          </PrivateRoutes>
+        ),
         loader: async ({ params }) => {
           try {
             const response = await fetch(
