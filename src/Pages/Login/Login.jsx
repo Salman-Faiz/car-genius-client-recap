@@ -23,14 +23,14 @@ const Login = () => {
         console.log(loggedInUser);
         const user = { email };
         // get access Token
-        axios
-          .post("http://localhost:5000/jwt", user, { withCredentials: true })
-          .then((res) => {
-            console.log(res.data);
-            if (res.data.success) {
-              Navigate(location?.state ? location?.state : "/");
-            }
-          });
+        // axios
+        //   .post("http://localhost:5000/jwt", user, { withCredentials: true })
+        //   .then((res) => {
+        //     console.log(res.data);
+        //     if (res.data.success) {
+        //       Navigate(location?.state ? location?.state : "/");
+        //     }
+        //   });
       })
       .catch((error) => {
         const errorCode = error.code;
