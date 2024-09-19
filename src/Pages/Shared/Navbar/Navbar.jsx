@@ -5,7 +5,7 @@ import logo from "../../../../public/assets/logo.svg";
 import useAuth from "../../../hooks/useAuth";
 
 const Navbar = () => {
-  const { user, logOut } = useAuth();
+  const { user, logOut } = useAuth(); //custom hook
 
   const handleLogOut = () => {
     logOut()
